@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Calculate location of stronghold</h2>
+<h3></h3>
+
+<p id="res"></p>
+<p id="demo"></p>
+
+<script>
+alert("Check your x and z coordinates and submit them")
+var x1 = prompt("Give coordinate x1:")
+var z1 = prompt("Give coordinate z1:")
+alert("Throw eye of ender and walk at least about 10 blocks STRAIGHT to the direction the eye is showing, then submit new x and z coordinates")
+var x2 = prompt("Give coordinate x2:")
+if (x1 - x2 == 0) x2 = prompt("Please use a bit different value for x2")
+var z2 = prompt("Give coordinate z2:")
+alert("Walk about 90 degrees to either direction from your location, then submit new x and z coordinates")
+var x3 = prompt("Give coordinate x3:")
+var z3 = prompt("Give coordinate z3:")
+alert("Throw eye or ender and walk at least about 10 blocks STRAIGHT to the direction the eye is showing, then submit new x and z coordinates")
+var x4 = prompt("Give coordinate x4:")
+if (x3 - x4 == 0) x3 = prompt("Please use a bit different value for x3")
+var z4 = prompt("Give coordinate z4:")
+
+const kA = (z1 - z2) / (x1 - x2)
+const kB = (z3 - z4) / (x3 - x4)
+const bA = z1 - (z1 - z2) / (x1 - x2) * x1
+const bB = z3 - (z3 - z4) / (x3 - x4) * x3
+document.getElementById("res").innerHTML = "kA: " + kA + ", kB: " + kB + " , bA: " + bA + " , bB: " + bB
+
+
+xL = (bB - bA) / (kA - kB)
+zL = kA * (bB - bA) / (kA - kB)
+
+document.getElementById("demo").innerHTML = "Coordinates (about) where to dig down for stronghold: " + "(" + Math.round(xL) + ", y, " + Math.round(zL) + ")";
+</script>
+
+</body>
+</html> 
